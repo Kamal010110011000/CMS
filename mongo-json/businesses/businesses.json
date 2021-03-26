@@ -1,0 +1,45 @@
+[
+  {
+    "_id": "5e8ead3202581a15d46b5ea2",
+    "officeLocation": ["Dehradun"],
+    "mapAnnotation": [],
+    "address": "7/6, General Wing, Prem Nagar, Dehradun, Uttarakhand 248007",
+    "email": "info.kibtech@gmail.com",
+    "description": "its Fine",
+    "facebookUrl": "https://www.facebook.com/AyushTyagi007",
+    "linkedInUrl": "",
+    "twitterUrl": "",
+    "instagramUrl": "",
+    "phoneNumber": 8077600748,
+    "aboutUs": "Prem General Store is an ecommerce platform.",
+    "storeName": "PREM",
+    "dasboardLogo": {
+      "imageUrl": "https://ik.imagekit.io/ceuadc05cx/Frame_280_5Q-AlV9aYx.png",
+      "imageId": "5ebd50bdb8db3d4092c02388",
+      "filePath": "/Frame_280_5Q-AlV9aYx.png"
+    },
+    "userApp": {
+      "imageUrl": "https://ik.imagekit.io/ceuadc05cx/Frame_409_80_ZTm8peupxq.png",
+      "imageId": "5ebd50a1edb409321d5b1916",
+      "filePath": "/Frame_409_80_ZTm8peupxq.png"
+    },
+    "webApp": {
+      "imageUrl": "https://ik.imagekit.io/ceuadc05cx/Frame_280_5Q-AlV9aYx.png",
+      "imageId": "5ebd50a9edb409321d5b191a",
+      "filePath": "/Frame_280_5Q-AlV9aYx.png"
+    },
+    "deliveryAppLogo": {
+      "imageUrl": "https://ik.imagekit.io/ceuadc05cx/Frame_409_80_ZTm8peupxq.png",
+      "imageId": "5ebd50b48577d050631dc565",
+      "filePath": "/Frame_409_80_ZTm8peupxq.png"
+    },
+    "createdAt": "2020-04-09T05:05:54.359Z",
+    "updatedAt": "2020-05-15T11:27:16.037Z",
+    "__v": 0,
+    "iconLogo": {
+      "imageId": "5ebd50c5868e471ddea38de1",
+      "imageUrl": "https://ik.imagekit.io/ceuadc05cx/Frame_16_qGWB1oke9.png",
+      "filePath": "/Frame_16_qGWB1oke9.png"
+    }
+  }
+]
