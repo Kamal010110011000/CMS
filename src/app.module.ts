@@ -31,11 +31,8 @@ import { BusinessModule } from './business/business.module';
 import { SubcategoryModule } from './subcategory/subcategory.module';
 import { SeedModule } from './seed/seed.module';
 import { SequenceModule } from './sequence/sequence.module';
-import { BillModule } from './bill/bill/bill.module';
 import { ReturnSlipModule } from './return-slip/return-slip.module';
 import { BillModule } from './bill/bill.module';
-import { TransactionModule } from './transaction/transaction/transaction.module';
-import { BillModule } from './bill/bill/bill.module';
 
 
 @Global()
@@ -75,7 +72,6 @@ import { BillModule } from './bill/bill/bill.module';
         SeedModule,
         SequenceModule,
         BillModule,
-        TransactionModule,
         ReturnSlipModule,
         
     ],

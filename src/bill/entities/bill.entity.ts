@@ -23,7 +23,7 @@ export const BillSchema = new mongoose.Schema({
     ],
     expiry_date: Date,
     additional_charges: [{
-        type: String,
+        type: {type: String},
         amount: Number
     }],
     status: {
