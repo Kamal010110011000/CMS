@@ -13,6 +13,7 @@ import {CartService} from '../cart/cart.service';
 import {ProductsDTO} from '../products/products.model';
 import {NewOderModel,StartEndDTO} from './order.model';
 import {AppGateway} from '../app.gateway';
+import { Sequence } from 'src/sequence/sequence.model';
 const _ = require('lodash');
 var appRoot = require('app-root-path');
 const GeneralService = require('../utils/general-service');
@@ -36,7 +37,7 @@ export class OrderService {
                 @InjectModel('Rating') private readonly ratingModel: Model<any>,
                 @InjectModel('Categories') private readonly categoryModel: Model<any>,
                 @InjectModel('Setting') private readonly settingModel: Model<any>,
-                @InjectModel('Sequence') private readonly sequenceModel: Model<any>,
+                @InjectModel('Sequence') private readonly sequenceModel: Model<Sequence>,
                 private socketService: AppGateway,
                 private readonly httpServise: HttpService,
                 // private appService: AppService

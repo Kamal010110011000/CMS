@@ -9,4 +9,7 @@ export const SequenceSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-
+export interface Sequence extends mongoose.Document{
+  sequenceType: string;
+  sequenceNo: number;
+}

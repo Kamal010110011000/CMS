@@ -1,26 +1,39 @@
-import { Injectable } from '@nestjs/common';
-import { CreateReturnSlipDto } from './dto/create-return-slip.dto';
-import { UpdateReturnSlipDto } from './dto/update-return-slip.dto';
+import { HttpStatus, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { ReturnSlip, ReturnSlipDto } from './return-slip.model';
 
 @Injectable()
 export class ReturnSlipService {
-  create(createReturnSlipDto: CreateReturnSlipDto) {
-    return 'This action adds a new returnSlip';
+
+  constructor( @InjectModel('ReturnSlip') private readonly returnSlipModel: Model<ReturnSlip>,){}
+
+  public async create(returnSlipDto: ReturnSlipDto) {
+    const response = await this.returnSlipModel.create(returnSlipDto);
+    if (response._id) {
+      return {response_code: HttpStatus.CREATED, response_data: 'bill saved successfully.'};
+    } else {
+      return {response_code: HttpStatus.BAD_REQUEST, response_data: 'Could not save bill'};
+    }
   }
 
-  findAll() {
-    return `This action returns all returnSlip`;
+  public async findAll() {
+    const return_slips = await this.returnSlipModel.find();
+    return {response_code: HttpStatus.OK, response_data: return_slips};
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} returnSlip`;
+  public async findOne(id: string) {
+    const return_slip = await this.returnSlipModel.findById(id);
+    return {response_code: HttpStatus.OK, response_data: return_slip};
   }
 
-  update(id: number, updateReturnSlipDto: UpdateReturnSlipDto) {
-    return `This action updates a #${id} returnSlip`;
+  public async update(id: string, returnSlipDto: ReturnSlipDto) {
+    const response = await this.returnSlipModel.findByIdAndUpdate(id, returnSlipDto);
+    return {response_code: HttpStatus.OK, response_data: "return slip data updated"};
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} returnSlip`;
+  public async remove(id: string) {
+    const response = await this.returnSlipModel.findByIdAndDelete(id);
+    return {response_code: HttpStatus.OK, response_data: "return slip deleted successfully"}
   }
 }

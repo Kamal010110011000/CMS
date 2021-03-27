@@ -33,6 +33,7 @@ import { SeedModule } from './seed/seed.module';
 import { SequenceModule } from './sequence/sequence.module';
 import { ReturnSlipModule } from './return-slip/return-slip.module';
 import { BillModule } from './bill/bill.module';
+import { QuotationModule } from './quotation/quotation.module';
 
 
 @Global()
@@ -73,6 +74,7 @@ import { BillModule } from './bill/bill.module';
         SequenceModule,
         BillModule,
         ReturnSlipModule,
+        QuotationModule,
         
     ],
     controllers: [AppController],

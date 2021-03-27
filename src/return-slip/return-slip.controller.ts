@@ -1,14 +1,14 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { ReturnSlipDto } from './return-slip.model';
 import { ReturnSlipService } from './return-slip.service';
-import { CreateReturnSlipDto } from './dto/create-return-slip.dto';
-import { UpdateReturnSlipDto } from './dto/update-return-slip.dto';
+
 
 @Controller('return-slip')
 export class ReturnSlipController {
   constructor(private readonly returnSlipService: ReturnSlipService) {}
 
   @Post()
-  create(@Body() createReturnSlipDto: CreateReturnSlipDto) {
+  create(@Body() createReturnSlipDto: ReturnSlipDto) {
     return this.returnSlipService.create(createReturnSlipDto);
   }
 
@@ -19,16 +19,16 @@ export class ReturnSlipController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.returnSlipService.findOne(+id);
+    return this.returnSlipService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReturnSlipDto: UpdateReturnSlipDto) {
-    return this.returnSlipService.update(+id, updateReturnSlipDto);
+  update(@Param('id') id: string, @Body() updateReturnSlipDto: ReturnSlipDto) {
+    return this.returnSlipService.update(id, updateReturnSlipDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.returnSlipService.remove(+id);
+    return this.returnSlipService.remove(id);
   }
 }
