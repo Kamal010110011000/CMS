@@ -7,7 +7,7 @@ import { Quotation } from './entities/quotation.entity';
 @Injectable()
 export class QuotationService {
 
-  constructor( @InjectModel('ReturnSlip') private readonly quotationModel: Model<Quotation>,){}
+  constructor( @InjectModel('Quotation') private readonly quotationModel: Model<Quotation>,){}
 
   create(createQuotationDto: CreateQuotationDto) {
     return 'This action adds a new quotation';
