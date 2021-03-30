@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateQuotationDto } from './dto/create-quotation.dto';
@@ -9,23 +9,33 @@ export class QuotationService {
 
   constructor( @InjectModel('Quotation') private readonly quotationModel: Model<Quotation>,){}
 
-  create(createQuotationDto: CreateQuotationDto) {
-    return 'This action adds a new quotation';
+  public async create(createQuotationDto: CreateQuotationDto) {
+    const response = await this.quotationModel.create(createQuotationDto);
+    if (response._id) {
+      return {response_code: HttpStatus.CREATED, response_data: 'quotation saved successfully.'};
+    } else {
+      return {response_code: HttpStatus.BAD_REQUEST, response_data: 'quotation not save bill'};
+    }
   }
 
-  findAll() {
-    return `This action returns all quotation`;
+  public async findAll() {
+    const quotations = await this.quotationModel.find();
+    return {response_code: HttpStatus.OK, response_data: quotations};
+    
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} quotation`;
+  public async findOne(id: string) {
+    const quotation = await this.quotationModel.findById(id);
+    return {response_code: HttpStatus.OK, response_data: quotation};
   }
 
-  update(id: string, updateQuotationDto: CreateQuotationDto) {
-    return `This action updates a #${id} quotation`;
+  public async update(id: string, updateQuotationDto: CreateQuotationDto) {
+    const quotations = await this.quotationModel.findByIdAndUpdate(id, updateQuotationDto);
+    return {response_code: HttpStatus.OK, response_data: "quotation updated successfully"};
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} quotation`;
+  public async remove(id: string) {
+    const response = await this.quotationModel.findByIdAndDelete(id);
+    return { response_code: HttpStatus.OK, response_data: "qutation deleted successfully"};
   }
 }

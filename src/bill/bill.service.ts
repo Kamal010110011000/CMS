@@ -38,4 +38,33 @@ export class BillService {
     const response = await this.billModel.findByIdAndDelete(id);
     return {response_code: HttpStatus.OK, response_data: "bill deleted successfully"};
   }
+
+  public async findSale(){
+    return "sale details";
+  }
+
+  public async findPurchase(){
+    return "purchase details";
+  }
+
+  public async profitOrLoss(){
+    return "profit provider"
+  }
+
+  public async monthProfit(month: string){
+    return " profit this month"
+  }
+
+  public async profitOrLossDaily(date: string){
+    return " profit today";
+  }
+
+  public async gstReturn(){
+    return "gst Return";
+  }
+
+  public async sendSms(){
+    return "sms send";
+  }
+
 }

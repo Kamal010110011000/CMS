@@ -10,6 +10,9 @@ export class SupplyDto{
     quantity: number;
     
     @IsOptional()
+    estimate: number;
+    
+    @IsOptional()
     criteria: string;
 
     @IsOptional()
@@ -28,3 +31,4 @@ export class CreateQuotationDto {
     @Type(() => SupplyDto)
     supply: SupplyDto[];
 }
+

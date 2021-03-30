@@ -21,6 +21,26 @@ export class BillController {
     return this.billService.findOne(id);
   }
 
+  @Get('/gst-return')
+  getGstReturn(){
+    return this.billService.gstReturn();
+  }
+
+  @Get('/sale')
+  getSaleBill(){
+    return this.billService.findSale();
+  }
+
+  @Get('/purchase')
+  getPurchaseBill(){
+    return this.billService.findPurchase();
+  }
+
+  @Get('/profit')
+  getProfit(){
+    return this.billService.profitOrLoss();
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() bill: Bill) {
     return this.billService.update(id, bill);
