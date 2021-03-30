@@ -1,4 +1,4 @@
-import *as mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer/decorators';
 
