@@ -6,10 +6,14 @@ export const BillSchema = new mongoose.Schema({
     customer: {
         type: String
     },
+    slug:{
+        type: String,
+    },
     items:[
         {
             productId: {
-                type: String
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Products'
             },
             batch_id: String,
             quantity: Number,
@@ -197,10 +201,44 @@ export class BillDto{
     @ValidateNested({each: true})
     @Type(()=> TotalDto)
     total: TotalDto;
-
-
 }
 
+export const RevenueSchema = new mongoose.Schema({
+    productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Products'
+    },
+    quantity: Number,
+    buyingPrice: Number,
+    sellingPrice: Number,
+},{timestamps: true});
 
+export interface Revenue extends mongoose.Document {
+    productId : String,
+    quantity: number;
+    buyingPrice: number;
+    sellingPrice: number;
+}
+
+export class CreateRevenueDto {
+    @IsNotEmpty()
+    productId: string;
+
+    @IsNotEmpty()
+    @IsNumber()
+    quantity: number;
+
+    @IsNotEmpty()
+    @IsNumber()
+    buyingPrice: number;
+
+    @IsNotEmpty()
+    @IsNumber()
+    sellingPrice: number
+}
+
+export class GST{
+    
+}
 
 

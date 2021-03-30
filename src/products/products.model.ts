@@ -1,17 +1,26 @@
 import * as mongoose from 'mongoose';
+import * as slug from 'mongoose-slug-updater';
 import {ArrayMinSize, IsBoolean, IsEmpty, IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsPositive, Max, Min, ValidateNested} from 'class-validator';
 import {ApiModelProperty} from '@nestjs/swagger';
 import {Type} from 'class-transformer/decorators';
 import {CouponsDTO} from '../coupons/coupons.model';
+mongoose.plugin(slug);
 
 export const ProductsSchema = new mongoose.Schema({
     title: {
         type: String,
     },
+    slug:{
+        type: String,
+        slug: "title"
+    },
     description: {
         type: String,
     },
-    price: {
+    cost_price: {
+        type: Number,
+    },
+    price:{
         type: Number,
     },
     user: {
@@ -81,11 +90,11 @@ export class ProductsDTO {
     @IsOptional()
     _id: string;
 
-    @IsOptional()
+    @IsNotEmpty()
     @ApiModelProperty()
     title: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     @ApiModelProperty()
     description: string;
 
@@ -93,6 +102,7 @@ export class ProductsDTO {
     // @IsNumber()
     @ApiModelProperty()
     price: number;
+
 
     @IsOptional()
     @ApiModelProperty()
@@ -131,7 +141,8 @@ export class ProductsDTO {
     @ApiModelProperty()
     filePath: string;
 
-    
+    @IsOptional()
+    cost_price: number;
 
     @ApiModelProperty()
     productstock: Number;

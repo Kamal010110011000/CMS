@@ -67,6 +67,7 @@
     "mongo-seeding": "^3.6.0",
     "mongodb": "^3.6.5",
     "mongoose": "^5.12.2",
+    "mongoose-slug-updater": "^3.3.0",
     "nest-schedule": "^0.6.3",
     "ngrok": "^3.4.1",
     "node-geocoder": "^3.27.0",

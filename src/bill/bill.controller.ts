@@ -21,9 +21,14 @@ export class BillController {
     return this.billService.findOne(id);
   }
 
-  @Get('/gst-return')
-  getGstReturn(){
-    return this.billService.gstReturn();
+  @Get('/gst-return/:year')
+  getGstReturnYear(@Param('year') year: number){
+    return this.billService.getGstReturnYearly(year);
+  }
+
+  @Get('/gst-return/:month/:year')
+  getGstReturn(@Param('month') month: number, @Param('year') year: number){
+    return this.billService.gstReturnMonthly(month, year);
   }
 
   @Get('/sale')
@@ -36,9 +41,36 @@ export class BillController {
     return this.billService.findPurchase();
   }
 
-  @Get('/profit')
+  @Get('/profit-loss')
   getProfit(){
     return this.billService.profitOrLoss();
+  }
+
+  @Get('/profit-loss/today')
+  getTodayProfitLoss(){
+    var date = new Date(Date.now());
+    return this.billService.profitOrLossDaily(date);
+  }
+
+  @Get('/profit-loss/:date')
+  getProfitLossDaily(@Param('date') date: string){
+    var d = new Date(date);
+    return this.billService.profitOrLossDaily(d);
+  }
+
+  @Get('/profit-loss/:month/:year')
+  getProfitLossMonth(@Param('month') month: number, @Param('year') year: number){
+    return this.billService.profitOrLossMonthly(month, year);
+  }
+
+  @Get('/send-reminder/:number')
+  sendReminder(@Param('number') num: number){
+    return this.billService.sendSms(num);
+  }
+
+  @Get('/margin/:product')
+  getMargin(@Param('product') prod: string){
+    return this.billService.productMargin(prod);
   }
 
   @Patch(':id')
