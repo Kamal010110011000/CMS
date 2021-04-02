@@ -1,3 +1,5 @@
+import { Optional } from '@nestjs/common';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { ArrayMinSize, IsDate, IsIn, IsNotEmpty, IsNumber, IsOptional, ValidateNested } from 'class-validator';
 import * as mongoose from 'mongoose';
@@ -81,45 +83,56 @@ export class AdditionalCharges{
 
 
 export class ItemDto{
+    
+    @ApiModelProperty()
     @IsNotEmpty()
     productId: string;
     
     @IsOptional()
     batch_id: string;
     
+    @ApiModelProperty()
     @IsNumber()
     quantity: number;
 
+    @ApiModelProperty()
     @IsNumber()
     @IsOptional()
     free: number;
 
+    @ApiModelProperty()
     @IsNumber()
     @IsNotEmpty()
     rate: number;
 
+    @ApiModelPropertyOptional()
     @IsNumber()
     @IsOptional()
     discount_percent: number;
 
+    @ApiModelPropertyOptional()
     @IsNumber()
     @IsOptional()
     cgst: number;
 
+    @ApiModelPropertyOptional()
     @IsNumber()
     @IsOptional()
     sgst: number;
 
     @IsNumber()
+    @ApiModelPropertyOptional()
     @IsOptional()
     igst: number;
 
     @IsNumber()
     @IsOptional()
+    @ApiModelPropertyOptional()
     utgst: number;
 
     @IsNumber()
     @IsNotEmpty()
+    @ApiModelPropertyOptional()
     total: number;
 }
 
@@ -127,9 +140,11 @@ export class ItemDto{
 
 export class AdditionalChargesDto{
     @IsNotEmpty()
+    @ApiModelProperty()
     type: string;
     
     @IsNotEmpty()
+    @ApiModelProperty()
     @IsNumber()
     amount: number;
 }
@@ -138,16 +153,20 @@ export class AdditionalChargesDto{
 export class TotalDto{
 
     @IsOptional()
+    @ApiModelPropertyOptional()
     totalGst: number;
 
     @IsNotEmpty()
+    @ApiModelProperty()
     @IsNumber()
     totalproductAmount: number;
 
     @IsOptional()
+    @ApiModelPropertyOptional()
     totalAddCharge: number;
 
     @IsNotEmpty()
+    @ApiModelProperty()
     @IsNumber()
     grandTotal: number;
 }
@@ -171,33 +190,41 @@ export class BillDto{
     _is: string;
 
     @IsNotEmpty()
+    @ApiModelProperty()
     customer: string;
 
+    @ApiModelProperty()
     @ValidateNested({each: true})
     @ArrayMinSize(1)
     @Type(()=> ItemDto)
     items: ItemDto[];
 
     @IsOptional()
+    @ApiModelProperty()
     expiryDate: Date;
 
+    @ApiModelProperty()
     @ValidateNested({each: true})
     @ArrayMinSize(0)
     @Type(()=> AdditionalChargesDto)
     additional_charges: AdditionalChargesDto[];
 
+    @ApiModelProperty()
     @IsNotEmpty()
     @IsIn(['bill', 'challan'])
     status: string;
     
+    @ApiModelProperty()
     @IsNotEmpty()
     @IsIn(['card', 'cash', 'upi', 'cheque', 'demand-draft', 'credit'])
     payment_type: string;
 
+    @ApiModelProperty()
     @IsNotEmpty()
     @IsIn(['sale', 'purchase'])
     type: string
 
+    @ApiModelProperty()
     @ValidateNested({each: true})
     @Type(()=> TotalDto)
     total: TotalDto;
@@ -221,17 +248,22 @@ export interface Revenue extends mongoose.Document {
 }
 
 export class CreateRevenueDto {
+
+    @ApiModelProperty()
     @IsNotEmpty()
     productId: string;
 
+    @ApiModelProperty()
     @IsNotEmpty()
     @IsNumber()
     quantity: number;
 
+    @ApiModelProperty()
     @IsNotEmpty()
     @IsNumber()
     buyingPrice: number;
 
+    @ApiModelProperty()
     @IsNotEmpty()
     @IsNumber()
     sellingPrice: number

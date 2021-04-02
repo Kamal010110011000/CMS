@@ -16,7 +16,6 @@ import {
   } from 'class-validator';
   import { ApiModelProperty } from '@nestjs/swagger';
   import { Type } from 'class-transformer';
-import { isString } from 'util';
 
   export const SettingSchema = new mongoose.Schema({
     pincode: [

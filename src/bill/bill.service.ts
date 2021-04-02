@@ -142,6 +142,7 @@ export class BillService {
       { json: true },
       (err, data, body) => {
         if (err) return {response_code: HttpStatus.BAD_REQUEST, response_data: "message not sent"};
+        console.log(data);
         return {response_code: HttpStatus.OK, response_data: "message sent"};
         
       }
